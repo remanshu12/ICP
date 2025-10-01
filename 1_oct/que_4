@@ -1,0 +1,24 @@
+class Solution {
+    public boolean lemonadeChange(int[] bills) {
+        int p=0;
+        int d=0;
+        for(int i=0;i<bills.length;i++){
+            if(bills[i]==10 && p>=1){
+                d++;
+                p--;
+            } else if(bills[i]==20 && (p>=1 && d>=1)){
+                p--;
+                d--;
+            }
+            else if(bills[i]==20 && p>=3 ){
+                p=p-3;
+                }
+           else if(bills[i]==5){
+                p++;
+            }else{
+                return false;
+            }
+        }
+        return true;
+    }
+}
