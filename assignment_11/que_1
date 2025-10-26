@@ -1,1 +1,44 @@
 
+//	A - Transformation: from A to B
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+public class Main
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+		long a=sc.nextInt();
+		long b=sc.nextInt();
+		ArrayList<Long> list=new ArrayList<>();
+		list.add(b);
+		while(b!=a){
+		    long r=b%10;
+		    if(b<a){
+		        break;
+		    }
+		    if(r==1){
+		        b=(b-1)/10;
+		        list.add(b);
+		    }else if(b%2==0){
+		        b=b/2;
+		        list.add(b);
+		    }else{
+		       
+		        break;
+		    }
+		}
+		if(b!=a){
+		    System.out.println("NO");
+		}else{
+        System.out.println("YES");
+		    System.out.println(list.size());
+		    while(list.size()!=0){
+		        System.out.print(list.remove(list.size()-1)+" ");
+		    }
+		}
+	}
+}
