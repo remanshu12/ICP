@@ -1,0 +1,61 @@
+///=---------- (B) Nastya and Door
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+public class Main
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        while(t-- >0){
+            int n=sc.nextInt();
+            int k=sc.nextInt();
+            int arr[]=new int[(int)n];
+            for(int i=0;i<n;i++){
+                arr[i]=sc.nextInt();
+            }
+            boolean pre[]=new boolean[n];
+            for(int i=1;i<n-1;i++){
+                if(arr[i]>arr[i-1] && arr[i]>arr[i+1]){
+                    pre[i]=true;
+                }
+            }
+         //   System.out.println(Arrays.toString(pre));
+            int s=k;
+            k=k-2;
+            int max=Integer.MIN_VALUE;
+            int count=0;
+            int temp=0;
+            for(int i=1;i<=k;i++){
+                if(pre[i]==true){
+                    count++;
+                }
+                
+            }
+             if(count>max){
+                    max=count;
+                    temp=k;
+                }
+           // System.out.println(count);           
+            int j=1;
+            
+            for(int i=k+1;i<n-1;i++){
+                if(pre[j]==true){
+                    count--;
+                }j++;
+                if(pre[i]==true){
+                    count++;
+                }
+             //  System.out.println(count);
+                if(count>max){
+                    max=count;
+                    temp=i;
+                }
+            }
+            System.out.println((max+1)+" "+((temp+2)-(s-1)));
+        }
+	}
+}
